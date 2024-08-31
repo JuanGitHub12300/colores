@@ -1,0 +1,23 @@
+---
+interface Props {
+    backgroundColor?: string;
+    borderColor?: string;
+    height?: string;
+    angle?: string;
+}
+
+const {
+    backgroundColor = "bg-gray-300",
+    borderColor = "bg-white",
+    height = "h-24",
+    angle = "-3deg",
+} = Astro.props;
+---
+
+<div class={`relative w-full ${height} ${backgroundColor} overflow-hidden -top-20`}>
+  <div
+    class={`absolute inset-0 ${borderColor} origin-top-right`}
+    style={`transform: skewY(${angle});`}
+  >
+  </div>
+</div>
