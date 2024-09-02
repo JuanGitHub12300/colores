@@ -1,76 +1,57 @@
+---
+import Desplegable from './Desplegable.astro';
+---
+
 <nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3">
-      <div
-        class="container px-4 mx-auto flex flex-wrap items-center justify-between"
-      >
-        <div
-          class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
-        >
-          <a
-            class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-            href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/presentation"
-            >Puntadas de colores</a
-          ><button
-            class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-            type="button"
-            onclick="toggleNavbar('example-collapse-navbar')"
-          >
-            <i class="text-white fas fa-bars"></i>
-          </button>
+      <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
+        <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+          <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white" href="#">
+            Puntadas de colores
+            </a>
+            <button class="text-white cursor-pointer text-xl leading-none px-3 py-2 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none" type = "button" onclick="(() => toggleNavbar('desplegable'))()">
+              <Desplegable></Desplegable>
+            </button>
         </div>
-        <div
-          class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none hidden"
-          id="example-collapse-navbar"
-        >
-          <ul class="flex flex-col lg:flex-row list-none mr-auto">
+        <div class="ml-auto lg:flex  items-center bg-gray-700 lg:bg-transparent lg:shadow-none hidden" id="desplegable">
+          <ul class="flex flex-col lg:flex-row list-none lg:ml-auto ">
             <li class="flex items-center">
-              <a
-                class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/landing"
-                ><i
-                  class="lg:text-gray-300 text-gray-500 far fa-file-alt text-lg leading-lg mr-2"
-                ></i>
-                Docs</a
-              >
-            </li>
-          </ul>
-          <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
-            <li class="flex items-center">
-              <a
-                class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="#pablo"
-                ><i
-                  class="lg:text-gray-300 text-gray-500 fab fa-facebook text-lg leading-lg"
-                ></i><span class="lg:hidden inline-block ml-2">Share</span></a
-              >
+              <a class="lg:hover:text-gray-300 text-white px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold" href="#inicio">
+                <i class="lg:text-gray-300 text-gray-500 fab fa-facebook text-lg leading-lg"></i>
+                  <span class="inline-block ml-2">Inicio</span>
+              </a>
             </li>
             <li class="flex items-center">
-              <a
-                class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="#pablo"
-                ><i
-                  class="lg:text-gray-300 text-gray-500 fab fa-twitter text-lg leading-lg"
-                ></i><span class="lg:hidden inline-block ml-2">Tweet</span></a
-              >
+              <a class="lg:text-white lg:hover:text-gray-300 text-white px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold" href="#vestuario">
+                <i class="lg:text-gray-300 text-gray-500 fab fa-twitter text-lg leading-lg"></i>
+                <span class="inline-block ml-2">Vestuario</span>
+              </a>
             </li>
             <li class="flex items-center">
-              <a
-                class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="#pablo"
-                ><i
-                  class="lg:text-gray-300 text-gray-500 fab fa-github text-lg leading-lg"
-                ></i><span class="lg:hidden inline-block ml-2">Star</span></a
-              >
+              <a class="lg:text-white lg:hover:text-gray-300 text-white px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold" href="#ubicación">
+                <i class="lg:text-gray-300 text-gray-500 fab fa-github text-lg leading-lg"></i>
+                <span class="inline-block ml-2">Ubicación</span>
+              </a>
             </li>
             <li class="flex items-center">
-              <button
-                class="bg-white text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
-                type="button"
-                style="transition: all 0.15s ease 0s;"
-              >
-                <i class="fas fa-arrow-alt-circle-down"></i> Download
-              </button>
+              <a class="lg:text-white lg:hover:text-gray-300 text-white px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold" href="#contactanos">
+                <i class="lg:text-gray-300 text-gray-500 fab fa-github text-lg leading-lg"></i>
+                <span class="inline-block ml-2">Contactanos</span>
+              </a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+    <script is:inline>
+      function toggleNavbar(collapseID) {
+        const element = document.getElementById(collapseID);
+        
+        if (element) {
+          element.classList.toggle("hidden");
+          element.classList.toggle("flex");
+        } else {
+          console.error(`Element with ID '${collapseID}' not found.`);
+        }
+      }
+    </script>
+    

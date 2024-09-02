@@ -2,12 +2,13 @@
 import Footer from "./Footer.astro"
 import SeparacionDiagonal from "./SeparacionDiagonal.astro"
 import Seccion3 from "./Seccion3.astro"
-import Seccion2 from "./Seccion2.astro"
+import Ubicacion from "./Ubicacion.astro"
 ---
 
-<section class="relative py-20 bg-white">
-    <SeparacionDiagonal></SeparacionDiagonal> 
+<section class="relative pt-20 bg-white">
+    <SeparacionDiagonal backgroundColor = "bg-gray-300" borderColor="bg-white"></SeparacionDiagonal> 
     <Seccion3></Seccion3>
-    <Seccion2></Seccion2>
+    <SeparacionDiagonal backgroundColor = "bg-white" borderColor="bg-gray-900" id="ubicación"></SeparacionDiagonal>
+    <Ubicacion></Ubicacion>
     <Footer></Footer>
 </section>
