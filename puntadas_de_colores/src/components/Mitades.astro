@@ -1,8 +1,14 @@
 ---
 import Izquierda from "./Izquierda.astro"
 import Derecha from "./Derecha.astro"
+
+interface Props {
+    idMitad ?: string,
+    componente?:any,
+};
+const {idMitad, componente}=Astro.props;
 ---
-<div class="flex flex-wrap items-center mt-32" id="damas">
-    <Izquierda></Izquierda>
+<div class="flex flex-wrap items-center mt-32" id={idMitad}>
+    <Izquierda componente1={componente}></Izquierda>
     <Derecha></Derecha>
 </div>

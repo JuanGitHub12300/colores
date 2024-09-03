@@ -1,0 +1,61 @@
+---
+// Este es el componente Astro
+const images = [
+  "Img.webp",
+  "Img1.webp",
+];
+
+let currentIndex = 0;
+---
+<div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+  <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-pink-600">
+    <!-- Imagen del carrusel -->
+    <img
+      id="carousel-image"
+      alt="..."
+      src={images[currentIndex]}
+      class="w-full align-middle rounded-t-lg"
+    />
+    <blockquote class="relative p-8 mb-4">
+      <svg
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 583 95"
+        class="absolute left-0 w-full block"
+        style="height: 95px; top: -94px;"
+      >
+        <polygon
+          points="-30,95 583,95 583,65"
+          class="text-pink-600 fill-current"
+        ></polygon>
+      </svg>
+      <h4 class="text-xl font-bold text-white">Top Notch Services</h4>
+      <p class="text-md font-light mt-2 text-white">
+        The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens.
+      </p>
+    </blockquote>
+    <!-- Controles del carrusel -->
+    <div class="flex justify-between p-4">
+      <button onclick="previousImage()" class="bg-white text-pink-600 px-4 py-2 rounded">Anterior</button>
+      <button onclick="nextImage()" class="bg-white text-pink-600 px-4 py-2 rounded">Siguiente</button>
+    </div>
+  </div>
+</div>
+
+<!-- Script del carrusel -->
+<script is:inline>
+  function updateImage() {
+    const imageElement = document.getElementById('carousel-image');
+    imageElement.src = images[currentIndex];
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateImage();
+  }
+
+  function previousImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateImage();
+  }
+</script>

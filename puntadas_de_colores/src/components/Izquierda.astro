@@ -1,5 +1,11 @@
 ---
 import Bestido from './Bestido.astro';
+
+interface Props {
+  componente1?:any
+};
+const {componente1:Icono1} = Astro.props
+
 ---
 <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
     <div
@@ -8,20 +14,19 @@ import Bestido from './Bestido.astro';
     <Bestido></Bestido>
     </div>
     <h3 class="text-3xl mb-2 font-semibold leading-normal">
-      Working with us is a pleasure
+      Diseños para damas
     </h3>
     <p
       class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700"
     >
-      Don't let your uses guess by attaching tooltips and popoves to
-      any element. Just make sure you enable them first via
-      JavaScript.
+    Explora nuestra exclusiva colección de diseños pensados especialmente para mujeres.
+    Desde estilos clásicos hasta tendencias modernas, encontrarás piezas únicas que realzan 
+    tu personalidad y estilo.
     </p>
     <p
       class="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700"
     >
-      The kit comes with three pre-built pages to help you get started
-      faster. You can change the text and images and you're good to
-      go. Just make sure you enable them first via JavaScript.
+    Nuestra colección incluye vestidos, blusas, pantalones y más, todos elaborados con 
+    materiales de alta calidad para garantizar comodidad y elegancia en cada ocasión.
     </p>
   </div>

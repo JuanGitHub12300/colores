@@ -1,72 +1,130 @@
 ---
 import Terno from './Terno.astro';
+import ArrowNext from './ArrowNext.astro';
+import ArrowPrevious from './ArrowPrevious.astro';
 ---
+
 <div class="container mx-auto px-4 pb-40" id="caballeros">
-    <div class="items-center flex flex-wrap">
-      <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-        <img
-          alt="..."
-          class="max-w-full rounded-lg shadow-lg"
-          src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-        />
-      </div>
-      <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
-        <div class="md:pr-12">
-          <div
-            class="text-blue-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-blue-300"
-          >
-            <Terno></Terno>
-          </div>
-          <h3 class="text-3xl font-semibold">A growing company</h3>
-          <p class="mt-4 text-lg leading-relaxed text-gray-600">
-            The extension comes with three pre-built pages to help you get
-            started faster. You can change the text and images and you're
-            good to go.
-          </p>
-          <ul class="list-none mt-6">
-            <li class="py-2">
-              <div class="flex items-center">
-                <div>
-                  <span
-                    class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"
-                    ><i class="fas fa-fingerprint"></i></span
-                  >
-                </div>
-                <div>
-                  <h4 class="text-gray-600">
-                    Carefully crafted components
-                  </h4>
-                </div>
-              </div>
-            </li>
-            <li class="py-2">
-              <div class="flex items-center">
-                <div>
-                  <span
-                    class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"
-                    ><i class="fab fa-html5"></i></span
-                  >
-                </div>
-                <div>
-                  <h4 class="text-gray-600">Amazing page examples</h4>
-                </div>
-              </div>
-            </li>
-            <li class="py-2">
-              <div class="flex items-center">
-                <div>
-                  <span
-                    class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"
-                    ><i class="far fa-paper-plane"></i></span
-                  >
-                </div>
-                <div>
-                  <h4 class="text-gray-600">Dynamic components</h4>
-                </div>
-              </div>
-            </li>
-          </ul>
+  <div class="items-center flex flex-wrap">
+    <div class="w-full md:w-4/12 ml-auto mr-auto px-4 relative overflow-hidden">
+      <!-- Imagen con botones de navegación del carrusel -->
+      <img
+        id="carousel"
+        alt="..."
+        src="Img2.webp"
+        class="w-full align-middle rounded-t-lg transition-transform duration-500 ease-out"
+      />
+      <!-- Controles del carrusel -->
+      <button onclick="previousImage1()" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white text-blue-600 px-4 py-2 rounded ml-6" id="prev1">
+        <ArrowPrevious></ArrowPrevious>
+      </button>
+      <button onclick="nextImage1()" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white text-blue-600 px-4 py-2 rounded mr-6" id="next1">
+        <ArrowNext></ArrowNext>
+      </button>
+    </div>
+   
+    <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
+      <div class="md:pr-12">
+        <div class="text-blue-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-blue-300">
+          <Terno></Terno>
         </div>
+        <h3 class="text-3xl font-semibold">Diseño para caballeros</h3>
+        <p class="mt-4 text-lg leading-relaxed text-gray-600">
+          Encuentra la mejor selección de moda masculina con diseños que combinan comodidad y 
+          sofisticación. Desde trajes formales hasta ropa casual, cada prenda está cuidadosamente 
+          elaborada para destacar tu mejor versión. Disfruta de una experiencia de compra única, con 
+          productos de alta calidad y un enfoque en los detalles que marcan la diferencia.
+        </p>
+       
+        <ul class="list-none mt-6">
+          <li class="py-2">
+            <div class="flex items-center">
+              <div>
+                <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200 mr-3">
+                  <i class="fas fa-fingerprint"></i>
+                </span>
+              </div>
+              <div>
+                <h4 class="text-gray-600">Camisas casuales</h4>
+              </div>
+            </div>
+          </li>
+          <li class="py-2">
+            <div class="flex items-center">
+              <div>
+                <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200 mr-3">
+                  <i class="fab fa-html5"></i>
+                </span>
+              </div>
+              <div>
+                <h4 class="text-gray-600">Chaquetas formales</h4>
+              </div>
+            </div>
+          </li>
+          <li class="py-2">
+            <div class="flex items-center">
+              <div>
+                <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200 mr-3">
+                  <i class="far fa-paper-plane"></i>
+                </span>
+              </div>
+              <div>
+                <h4 class="text-gray-600">Ropa deportiva</h4>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
+</div>
+
+<!-- Script del carrusel -->
+<script is:inline>
+  const images1 = [
+    // "Img.webp",
+    // "Img1.webp",
+    "Img2.webp"
+  ];
+  let currentIndex1 = 0;
+  const imageElement1 = document.getElementById('carousel');
+  
+  function updateImage1(direction) {
+    // Añade la clase de transición para crear el efecto
+    imageElement1.style.transition = "transform 0.5s ease-out";
+
+    if (direction === 'next1') {
+      imageElement1.style.transform = "translateX(-100%)"; // Desliza hacia la izquierda
+    } else {
+      imageElement1.style.transform = "translateX(100%)"; // Desliza hacia la derecha
+    }
+
+    setTimeout(() => {
+      // Cambia la imagen y resetea la posición
+      imageElement1.src = images1[currentIndex1];
+      imageElement1.style.transition = "none"; // Remueve la transición para el cambio de imagen
+
+      if (direction === 'next1') {
+        imageElement1.style.transform = "translateX(100%)"; // Coloca fuera de vista a la derecha
+      } else {
+        imageElement1.style.transform = "translateX(-100%)"; // Coloca fuera de vista a la izquierda
+      }
+
+      setTimeout(() => {
+        imageElement1.style.transition = "transform 0.5s ease-out";
+        imageElement1.style.transform = "translateX(0)"; // Desliza la imagen hacia el centro
+      }, 20); // Espera un pequeño delay para que se pueda aplicar la transición suavemente
+    }, 500); // Duración de la animación de salida
+  }
+
+  function nextImage1() {
+    currentIndex1 = (currentIndex1 + 1) % images1.length;
+    updateImage1('next1'); // Indica que la dirección es 'next'
+  }
+
+  function previousImage1() {
+    currentIndex1 = (currentIndex1 - 1 + images1.length) % images1.length;
+    updateImage1('prev1'); // Indica que la dirección es 'prev'
+  }
+</script>
+
