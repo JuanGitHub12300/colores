@@ -4,15 +4,15 @@ import ArrowNext from './ArrowNext.astro';
 import ArrowPrevious from './ArrowPrevious.astro';
 
 ---
-
 <section class="pb-20 bg-gray-300 -mt-56" id="niños"> 
     <div class="flex flex-wrap items-center mt-32">
         <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
-            <div
+            <a
               class="text-green-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-green-100 mt-8 md:mt-0"
-            >
+              href="#inicio"
+              >
             <Children></Children>
-            </div>
+            </a>
             <h3 class="text-3xl mb-2 font-semibold leading-normal">
                 Diseño para niños
             </h3>
@@ -23,46 +23,47 @@ import ArrowPrevious from './ArrowPrevious.astro';
             comodidad y estilo. Ofrecemos prendas resistentes y suaves, perfectas para acompañar a 
             los más pequeños en todas sus aventuras diarias.
             </p>
-          </div>
+        </div>
           
-<div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
-    <div
-      class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-green-600 overflow-hidden"
-    >
-      <img
-        id="carousel2"
-        alt="..."
-        src="Img4.webp"
-        class="w-full align-middle rounded-t-lg"
-      />
-      <blockquote class="relative p-8 mb-4">
-        <svg
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 583 95"
-          class="absolute left-0 w-full block"
-          style="height: 95px; top: -94px;"
-        >
-          <polygon
-            points="-30,95 583,95 583,65"
-            class="text-green-600 fill-current"></polygon>
-        </svg>
-        <h4 class="text-xl font-bold text-white mt-2">
-            Ofrecemos a nuestros clientes
-        </h4>
-        <p class="text-md font-light mt-2 text-white">
-          Ternos, pillamas, uniformes escolares, vestidos, chompas, trajes para el invierno, ropa para la temporada cálida.
-        </p>
-      </blockquote>
-      <!-- Controles del carrusel -->
-      <div class="flex justify-between p-4">
-        <button onclick="previousImage2()" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white text-green-600 px-4 ml-2 py-2 rounded" id="prev2"><ArrowPrevious></ArrowPrevious></button>
-        <button onclick="nextImage2()" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white text-green-600 px-4 py-2 mr-2 rounded" id="next2"><ArrowNext></ArrowNext></button>
-      </div>
-    </div>
-  </div>
+        <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+            <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-green-600 overflow-hidden">
+                <div class="w-full h-64 md:h-96 overflow-hidden">
+                    <img
+                        id="carousel2"
+                        alt="..."
+                        src="Img4.webp"
+                        class="w-full h-full object-cover align-middle rounded-t-lg"
+                    />
+                </div>
+                <blockquote class="relative p-8 mb-4">
+                    <svg
+                      preserveAspectRatio="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 583 95"
+                      class="absolute left-0 w-full block"
+                      style="height: 95px; top: -94px;"
+                    >
+                      <polygon
+                        points="-30,95 583,95 583,65"
+                        class="text-green-600 fill-current"></polygon>
+                    </svg>
+                    <h4 class="text-xl font-bold text-white mt-2">
+                        Ofrecemos a nuestros clientes
+                    </h4>
+                    <p class="text-md font-light mt-2 text-white">
+                      Ternos, pillamas, uniformes escolares, vestidos, chompas, trajes para el invierno, ropa para la temporada cálida.
+                    </p>
+                </blockquote>
+                <!-- Controles del carrusel -->
+                <div class="flex justify-between p-4">
+                    <button onclick="previousImage2()" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white text-green-600 px-4 ml-2 py-2 rounded" id="prev2"><ArrowPrevious></ArrowPrevious></button>
+                    <button onclick="nextImage2()" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white text-green-600 px-4 py-2 mr-2 rounded" id="next2"><ArrowNext></ArrowNext></button>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
+
 
 <script is:inline>
     const images2 = [
