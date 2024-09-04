@@ -3,17 +3,18 @@ import Terno from './Terno.astro';
 import ArrowNext from './ArrowNext.astro';
 import ArrowPrevious from './ArrowPrevious.astro';
 ---
-
 <div class="container mx-auto px-4 pb-40" id="caballeros">
   <div class="items-center flex flex-wrap">
-    <div class="w-full md:w-4/12 ml-auto mr-auto px-4 relative overflow-hidden">
-      <!-- Imagen con botones de navegación del carrusel -->
-      <img
-        id="carousel"
-        alt="..."
-        src="Img2.webp"
-        class="w-full align-middle rounded-t-lg transition-transform duration-500 ease-out"
-      />
+    <div class="w-full md:w-4/12 ml-auto mr-auto px-4 relative">
+      <!-- Contenedor de la imagen del carrusel -->
+      <div class="w-full h-64 md:h-96 overflow-hidden rounded-t-lg">
+        <img
+          id="carousel"
+          alt="..."
+          src="Img.webp"
+          class="w-full h-full object-cover align-middle transition-transform duration-500 ease-out"
+        />
+      </div>
       <!-- Controles del carrusel -->
       <button onclick="previousImage1()" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white text-blue-600 px-4 py-2 rounded ml-6" id="prev1">
         <ArrowPrevious></ArrowPrevious>
@@ -25,9 +26,9 @@ import ArrowPrevious from './ArrowPrevious.astro';
    
     <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
       <div class="md:pr-12">
-        <div class="text-blue-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-blue-300">
+        <a class="text-blue-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-blue-300" href="#inicio">
           <Terno></Terno>
-        </div>
+        </a>
         <h3 class="text-3xl font-semibold">Diseño para caballeros</h3>
         <p class="mt-4 text-lg leading-relaxed text-gray-600">
           Encuentra la mejor selección de moda masculina con diseños que combinan comodidad y 
@@ -79,12 +80,13 @@ import ArrowPrevious from './ArrowPrevious.astro';
   </div>
 </div>
 
+
 <!-- Script del carrusel -->
 <script is:inline>
   const images1 = [
-    // "Img.webp",
-    // "Img1.webp",
-    "Img2.webp"
+    "Img.webp",
+    "Img3.webp",
+    "Img4.webp"
   ];
   let currentIndex1 = 0;
   const imageElement1 = document.getElementById('carousel');
