@@ -6,7 +6,6 @@ import ArrowPrevious from './ArrowPrevious.astro';
 <div class="container mx-auto px-4 pb-40" id="caballeros">
   <div class="items-center flex flex-wrap">
     <div class="w-full md:w-4/12 ml-auto mr-auto px-4 relative">
-      <!-- Contenedor de la imagen del carrusel -->
       <div class="w-full h-64 md:h-96 overflow-hidden rounded-t-lg">
         <img
           id="carousel"
@@ -15,7 +14,6 @@ import ArrowPrevious from './ArrowPrevious.astro';
           class="w-full h-full object-cover align-middle transition-transform duration-500 ease-out"
         />
       </div>
-      <!-- Controles del carrusel -->
       <button onclick="previousImage1()" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white text-blue-600 px-4 py-2 rounded ml-6" id="prev1">
         <ArrowPrevious></ArrowPrevious>
       </button>
@@ -23,7 +21,7 @@ import ArrowPrevious from './ArrowPrevious.astro';
         <ArrowNext></ArrowNext>
       </button>
     </div>
-   
+
     <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
       <div class="md:pr-12">
         <a class="text-blue-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-blue-300" href="#inicio">
