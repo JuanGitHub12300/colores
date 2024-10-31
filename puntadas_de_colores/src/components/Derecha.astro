@@ -50,6 +50,7 @@ import ArrowPrevious from './ArrowPrevious.astro';
       "Img8.webp",
       "Img9.webp",
       "Img10.webp",
+      "Img15.webp",
     ];
     let currentIndex = 0;
     const imageElement = document.getElementById('carousel-image');
@@ -92,31 +93,3 @@ import ArrowPrevious from './ArrowPrevious.astro';
       updateImage('prev'); // Indica que la dirección es 'prev'
     }
   </script>
-
-
-<!-- 
-<script is:inline>
-  const images = [
-    "Img1.webp", 
-    "Img2.webp" 
-  ];
-
-  let currentIndex = 0;
-
-  function updateImage() {
-    const imageElement = document.getElementById('carousel-image');
-    imageElement.src = images[currentIndex];
-  }
-
-  function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    updateImage();
-  }
-
-  function previousImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    updateImage();
-  }
-</script>
-  
-   -->
