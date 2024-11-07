@@ -55,7 +55,7 @@ const images = [
 
   // Función para mostrar la imagen actual
   function updateImage() {
-      const carouselImage = document.getElementById('carousel-image');
+      const carouselImage = document.getElementById('carousel-image') as HTMLImageElement;
       carouselImage.src = images[currentIndex];
   }
 
