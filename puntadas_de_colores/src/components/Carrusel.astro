@@ -1,19 +1,19 @@
 ---
-// Este es el componente Astro
+// Definición de las imágenes del carrusel
 const images = [
-  "Img.webp",
-  "Img1.webp",
+    'ruta/a/imagen1.jpg',
+    'ruta/a/imagen2.jpg',
+    'ruta/a/imagen3.jpg'
 ];
-
-let currentIndex = 0;
 ---
+
 <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
   <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-pink-600">
     <!-- Imagen del carrusel -->
     <img
       id="carousel-image"
-      alt="..."
-      src={images[currentIndex]}
+      alt="Carrusel de imágenes"
+      src={images[0]} 
       class="w-full align-middle rounded-t-lg"
     />
     <blockquote class="relative p-8 mb-4">
@@ -42,20 +42,45 @@ let currentIndex = 0;
   </div>
 </div>
 
-<!-- Script del carrusel -->
-<script is:inline>
+<script>
+  // Array de imágenes del carrusel
+  const images = [
+      'ruta/a/imagen1.jpg',
+      'ruta/a/imagen2.jpg',
+      'ruta/a/imagen3.jpg'
+  ];
+
+  // Índice actual de la imagen
+  let currentIndex = 0;
+
+  // Función para mostrar la imagen actual
   function updateImage() {
-    const imageElement = document.getElementById('carousel-image');
-    imageElement.src = images[currentIndex];
+      const carouselImage = document.getElementById('carousel-image') as HTMLImageElement;
+      carouselImage.src = images[currentIndex];
   }
 
-  function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    updateImage();
-  }
-
+  // Función para ir a la imagen anterior
   function previousImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    updateImage();
+      if (currentIndex > 0) {
+          currentIndex--;
+      } else {
+          currentIndex = images.length - 1; // Regresar al final si estamos en la primera imagen
+      }
+      updateImage();
   }
+
+  // Función para ir a la imagen siguiente
+  function nextImage() {
+      if (currentIndex < images.length - 1) {
+          currentIndex++;
+      } else {
+          currentIndex = 0; // Regresar al inicio si estamos en la última imagen
+      }
+      updateImage();
+  }
+
+  // Inicializar la imagen al cargar la página
+  document.addEventListener('DOMContentLoaded', () => {
+      updateImage();
+  });
 </script>
