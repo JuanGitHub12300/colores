@@ -1,19 +1,33 @@
 ---
 import ArrowNext from "./ArrowNext.astro";
 import ArrowPrevious from "./ArrowPrevious.astro";
+
+const images = [
+  "Img.webp",
+  "Img3.webp",
+  "Img5.webp",
+  "Img6.webp",
+  "Img8.webp",
+  "Img9.webp",
+  "Img10.webp",
+  "Img15.webp",
+];
+let currentIndex = 0;
 ---
 
-<div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+<div class="carousel-container w-full md:w-4/12 px-4 mr-auto ml-auto">
   <div
-    class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-pink-600 overflow-hidden"
+    class="carousel relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-pink-600 overflow-hidden"
   >
-    <div class="w-full h-64 md:h-96 overflow-hidden">
-      <img
-        id="carousel-image"
-        alt="..."
-        src="Img.webp"
-        class="w-full h-full object-cover align-middle rounded-t-lg"
-      />
+    <div class="carousel-image-container relative w-full h-64 md:h-96 overflow-hidden">
+      {images.map((image, index) => (
+        <img
+          src={image}
+          alt="Carousel image"
+          class={`carousel-image absolute w-full h-full object-cover align-middle rounded-t-lg ${index === 0 ? 'active' : ''}`}
+          style={`transform: translateX(${index * 100}%);`}
+        />
+      ))}
     </div>
     <blockquote class="relative p-8 mb-4">
       <svg
@@ -39,70 +53,88 @@ import ArrowPrevious from "./ArrowPrevious.astro";
       <button
         onclick="previousImage()"
         class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white text-pink-600 px-4 ml-2 py-2 rounded"
-        id="prev">
-        <ArrowPrevious />
-        </button
+        aria-label="Previous image"
       >
+        <ArrowPrevious />
+      </button>
       <button
         onclick="nextImage()"
         class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white text-pink-600 px-4 py-2 mr-2 rounded"
-        id="next">
-        <ArrowNext />
-        </button
+        aria-label="Next image"
       >
+        <ArrowNext />
+      </button>
     </div>
   </div>
 </div>
 
 <script is:inline>
-  const images = [
-    "Img.webp",
-    "Img3.webp",
-    "Img5.webp",
-    "Img6.webp",
-    "Img8.webp",
-    "Img9.webp",
-    "Img10.webp",
-    "Img15.webp",
-  ];
+  const images = document.querySelectorAll('.carousel-image');
   let currentIndex = 0;
-  const imageElement = document.getElementById("carousel-image");
 
-  function updateImage(direction) {
-    // Añade la clase de transición para crear el efecto
-    imageElement.style.transition = "transform 0.5s ease-out";
+  function updateActiveImage(newIndex) {
+    images[currentIndex].classList.remove('active', 'fade-in');
+    images[currentIndex].classList.add('hidden'); // Oculta la imagen anterior
 
-    if (direction === "next") {
-      imageElement.style.transform = "translateX(-100%)"; // Desliza hacia la izquierda
-    } else {
-      imageElement.style.transform = "translateX(100%)"; // Desliza hacia la derecha
-    }
-
-    setTimeout(() => {
-      // Cambia la imagen y resetea la posición
-      imageElement.src = images[currentIndex];
-      imageElement.style.transition = "none"; // Remueve la transición para el cambio de imagen
-
-      if (direction === "next") {
-        imageElement.style.transform = "translateX(100%)"; // Coloca fuera de vista a la derecha
-      } else {
-        imageElement.style.transform = "translateX(-100%)"; // Coloca fuera de vista a la izquierda
-      }
-
-      setTimeout(() => {
-        imageElement.style.transition = "transform 0.5s ease-out";
-        imageElement.style.transform = "translateX(0)"; // Desliza la imagen hacia el centro
-      }, 20); // Espera un pequeño delay para que se pueda aplicar la transición suavemente
-    }, 500); // Duración de la animación de salida
+    images[newIndex].classList.remove('hidden'); // Muestra la nueva imagen
+    images[newIndex].classList.add('active', 'fade-in');
+    currentIndex = newIndex;
   }
 
   function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    updateImage("next"); // Indica que la dirección es 'next'
+    const newIndex = (currentIndex + 1) % images.length;
+    updateActiveImage(newIndex);
   }
 
   function previousImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    updateImage("prev"); // Indica que la dirección es 'prev'
+    const newIndex = (currentIndex - 1 + images.length) % images.length;
+    updateActiveImage(newIndex);
   }
+
+  // Añade observador para carga diferida de imágenes cuando aparecen en pantalla
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('loaded');
+      }
+    });
+  }, { threshold: 0.5 });
+
+  images.forEach(image => observer.observe(image));
 </script>
+
+<style>
+  .carousel-container {
+    overflow: hidden;
+  }
+
+  .carousel-image-container {
+    position: relative;
+  }
+
+  .carousel-image {
+    transition: opacity 0.1s ease, transform 0.1s ease;
+    opacity: 0;
+    display: none; /* Ocultamos la imagen por defecto */
+  }
+
+  .carousel-image.active {
+    display: block; /* Solo la imagen activa se muestra */
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .carousel-image.fade-in {
+    animation: fadeIn 0.6s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  .carousel-image.loaded {
+    opacity: 1;
+    transition: opacity 0.1s ease;
+  }
+</style>
