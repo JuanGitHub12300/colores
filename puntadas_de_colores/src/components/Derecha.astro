@@ -1,7 +1,8 @@
 ---
-import ArrowNext from './ArrowNext.astro';
-import ArrowPrevious from './ArrowPrevious.astro';
+import ArrowNext from "./ArrowNext.astro";
+import ArrowPrevious from "./ArrowPrevious.astro";
 ---
+
 <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
   <div
     class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-pink-600 overflow-hidden"
@@ -35,61 +36,73 @@ import ArrowPrevious from './ArrowPrevious.astro';
     </blockquote>
     <!-- Controles del carrusel -->
     <div class="flex justify-between p-4">
-      <button onclick="previousImage()" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white text-pink-600 px-4 ml-2 py-2 rounded" id="prev"><ArrowPrevious></ArrowPrevious></button>
-      <button onclick="nextImage()" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white text-pink-600 px-4 py-2 mr-2 rounded" id="next"><ArrowNext></ArrowNext></button>
+      <button
+        onclick="previousImage()"
+        class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white text-pink-600 px-4 ml-2 py-2 rounded"
+        id="prev">
+        <ArrowPrevious />
+        </button
+      >
+      <button
+        onclick="nextImage()"
+        class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white text-pink-600 px-4 py-2 mr-2 rounded"
+        id="next">
+        <ArrowNext />
+        </button
+      >
     </div>
   </div>
 </div>
 
-  <script is:inline>
-    const images = [
-      "Img.webp",
-      "Img3.webp",
-      "Img5.webp",
-      "Img6.webp",
-      "Img8.webp",
-      "Img9.webp",
-      "Img10.webp",
-      "Img15.webp",
-    ];
-    let currentIndex = 0;
-    const imageElement = document.getElementById('carousel-image');
-    
-    function updateImage(direction) {
-      // Añade la clase de transición para crear el efecto
-      imageElement.style.transition = "transform 0.5s ease-out";
-  
-      if (direction === 'next') {
-        imageElement.style.transform = "translateX(-100%)"; // Desliza hacia la izquierda
+<script is:inline>
+  const images = [
+    "Img.webp",
+    "Img3.webp",
+    "Img5.webp",
+    "Img6.webp",
+    "Img8.webp",
+    "Img9.webp",
+    "Img10.webp",
+    "Img15.webp",
+  ];
+  let currentIndex = 0;
+  const imageElement = document.getElementById("carousel-image");
+
+  function updateImage(direction) {
+    // Añade la clase de transición para crear el efecto
+    imageElement.style.transition = "transform 0.5s ease-out";
+
+    if (direction === "next") {
+      imageElement.style.transform = "translateX(-100%)"; // Desliza hacia la izquierda
+    } else {
+      imageElement.style.transform = "translateX(100%)"; // Desliza hacia la derecha
+    }
+
+    setTimeout(() => {
+      // Cambia la imagen y resetea la posición
+      imageElement.src = images[currentIndex];
+      imageElement.style.transition = "none"; // Remueve la transición para el cambio de imagen
+
+      if (direction === "next") {
+        imageElement.style.transform = "translateX(100%)"; // Coloca fuera de vista a la derecha
       } else {
-        imageElement.style.transform = "translateX(100%)"; // Desliza hacia la derecha
+        imageElement.style.transform = "translateX(-100%)"; // Coloca fuera de vista a la izquierda
       }
-  
+
       setTimeout(() => {
-        // Cambia la imagen y resetea la posición
-        imageElement.src = images[currentIndex];
-        imageElement.style.transition = "none"; // Remueve la transición para el cambio de imagen
-  
-        if (direction === 'next') {
-          imageElement.style.transform = "translateX(100%)"; // Coloca fuera de vista a la derecha
-        } else {
-          imageElement.style.transform = "translateX(-100%)"; // Coloca fuera de vista a la izquierda
-        }
-  
-        setTimeout(() => {
-          imageElement.style.transition = "transform 0.5s ease-out";
-          imageElement.style.transform = "translateX(0)"; // Desliza la imagen hacia el centro
-        }, 20); // Espera un pequeño delay para que se pueda aplicar la transición suavemente
-      }, 500); // Duración de la animación de salida
-    }
-  
-    function nextImage() {
-      currentIndex = (currentIndex + 1) % images.length;
-      updateImage('next'); // Indica que la dirección es 'next'
-    }
-  
-    function previousImage() {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      updateImage('prev'); // Indica que la dirección es 'prev'
-    }
-  </script>
+        imageElement.style.transition = "transform 0.5s ease-out";
+        imageElement.style.transform = "translateX(0)"; // Desliza la imagen hacia el centro
+      }, 20); // Espera un pequeño delay para que se pueda aplicar la transición suavemente
+    }, 500); // Duración de la animación de salida
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateImage("next"); // Indica que la dirección es 'next'
+  }
+
+  function previousImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateImage("prev"); // Indica que la dirección es 'prev'
+  }
+</script>
