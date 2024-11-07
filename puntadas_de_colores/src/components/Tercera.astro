@@ -1,113 +1,155 @@
 ---
-import Children from './Niños.astro';
-import ArrowNext from './ArrowNext.astro';
-import ArrowPrevious from './ArrowPrevious.astro';
+import Children from "./Niños.astro";
+import ArrowNext from "./ArrowNext.astro";
+import ArrowPrevious from "./ArrowPrevious.astro";
 
+const images2 = ["Img4.webp", "Img7.webp", "Img16.webp", "Img18.webp"];
 ---
-<section class="pb-20 bg-gray-300 -mt-56" id="niños"> 
-    <div class="flex flex-wrap items-center mt-32">
-        <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
-            <a
-              class="text-green-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-green-100 mt-8 md:mt-0"
-              href="#inicio"
-              >
-            <Children></Children>
-            </a>
-            <h3 class="text-3xl mb-2 font-semibold leading-normal">
-                Diseño para niños
-            </h3>
-            <p
-              class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700"
-            >
-            Descubre nuestra divertida y colorida colección para niños, diseñada pensando en su 
-            comodidad y estilo. Ofrecemos prendas resistentes y suaves, perfectas para acompañar a 
-            los más pequeños en todas sus aventuras diarias.
-            </p>
-        </div>
-          
-        <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
-            <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-green-600 overflow-hidden">
-                <div class="w-full h-64 md:h-96 overflow-hidden">
-                    <img
-                        id="carousel2"
-                        alt="..."
-                        src="Img4.webp"
-                        class="w-full h-full object-cover align-middle rounded-t-lg"
-                    />
-                </div>
-                <blockquote class="relative p-8 mb-4">
-                    <svg
-                      preserveAspectRatio="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 583 95"
-                      class="absolute left-0 w-full block"
-                      style="height: 95px; top: -94px;"
-                    >
-                      <polygon
-                        points="-30,95 583,95 583,65"
-                        class="text-green-600 fill-current"></polygon>
-                    </svg>
-                    <h4 class="text-xl font-bold text-white mt-2">
-                        Ofrecemos a nuestros clientes
-                    </h4>
-                    <p class="text-md font-light mt-2 text-white">
-                      Ternos, pillamas, uniformes escolares, vestidos, chompas, trajes para el invierno, ropa para la temporada cálida.
-                    </p>
-                </blockquote>
-                <!-- Controles del carrusel -->
-                <div class="flex justify-between p-4">
-                    <button onclick="previousImage2()" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white text-green-600 px-4 ml-2 py-2 rounded" id="prev2"><ArrowPrevious></ArrowPrevious></button>
-                    <button onclick="nextImage2()" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white text-green-600 px-4 py-2 mr-2 rounded" id="next2"><ArrowNext></ArrowNext></button>
-                </div>
-            </div>
-        </div>
+
+<section class="pb-20 bg-gray-300 -mt-56" id="niños">
+  <div class="flex flex-wrap items-center mt-32">
+    <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
+      <a
+        class="text-green-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-green-100 mt-8 md:mt-0"
+        href="#inicio"
+      >
+        <Children />
+      </a>
+      <h3 class="text-3xl mb-2 font-semibold leading-normal">
+        Diseño para niños
+      </h3>
+      <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
+        Descubre nuestra divertida y colorida colección para niños, diseñada
+        pensando en su comodidad y estilo. Ofrecemos prendas resistentes y
+        suaves, perfectas para acompañar a los más pequeños en todas sus
+        aventuras diarias.
+      </p>
     </div>
+
+    <div class="container w-full md:w-4/12 px-4 mr-auto ml-auto">
+      <div
+        class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-green-600 overflow-hidden"
+      >
+        <div class="carousel-image2-container w-full h-64 md:h-96 overflow-hidden">
+          {images2.map((image, index)=>(
+            <img
+            src={image}
+            alt='Carousel image'
+            class={`carousel-image2 w-full h-full object-cover align-middle rounded-t-lg ${index ===0 ? "active" : "hidden"}`}
+          />
+          ))}
+        </div>
+        <button
+        onclick="previousImage2()"
+        class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white text-green-600 px-4 py-2 rounded ml-6"
+      >
+        <ArrowPrevious />
+      </button>
+      <button
+        onclick="nextImage2()"
+        class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white text-green-600 px-4 py-2 rounded mr-6"
+      >
+        <ArrowNext />
+      </button>
+        <blockquote class="relative p-8 mb-4">
+          <svg
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 583 95"
+            class="absolute left-0 w-full block"
+            style="height: 95px; top: -94px;"
+          >
+            <polygon
+              points="-30,95 583,95 583,65"
+              class="text-green-600 fill-current"></polygon>
+          </svg>
+          <h4 class="text-xl font-bold text-white mt-2">
+            Ofrecemos a nuestros clientes
+          </h4>
+          <p class="text-md font-light mt-2 text-white">
+            Ternos, pillamas, uniformes escolares, vestidos, chompas, trajes
+            para el invierno, ropa para la temporada cálida.
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </div>
 </section>
 
-
 <script is:inline>
-    const images2 = [
-      "Img4.webp",
-      "Img7.webp",
-      "Img16.webp",
-      "Img18.webp",
-    ];
-    let currentIndex2 = 0;
-    const imageElement2 = document.getElementById('carousel2');
-    
-    function updateImage2(direction) {
-      imageElement2.style.transition = "transform 0.5s ease-out";
-  
-      if (direction === 'next2') {
-        imageElement2.style.transform = "translateX(-100%)";
-      } else {
-        imageElement2.style.transform = "translateX(100%)"; 
-      }
-  
-      setTimeout(() => {
-        imageElement2.src = images2[currentIndex2];
-        imageElement2.style.transition = "none"; 
-  
-        if (direction === 'next2') {
-          imageElement2.style.transform = "translateX(100%)"; 
-        } else {
-          imageElement2.style.transform = "translateX(-100%)";
+  const images2 = document.querySelectorAll(".carousel-image2");
+  let currentIndex2 = 0;
+  function updateActiveImage2(newIndex) {
+    images2[currentIndex2].classList.remove("active", "fade-in");
+    images2[currentIndex2].classList.add("hidden");
+
+    images2[newIndex].classList.remove("hidden");
+    images2[newIndex].classList.add("active", "fade-in");
+    currentIndex2= newIndex;
+  }
+
+  function nextImage2() {
+    const newIndex2 = (currentIndex2 + 1) % images2.length;
+    updateActiveImage2(newIndex2);
+  }
+
+  function previousImage2() {
+    const newIndex2 = (currentIndex2 - 1 + images2.length) % images2.length;
+    updateActiveImage2(newIndex2);
+  }
+
+  const observer2 = new IntersectionObserver(
+    (entries)=>{
+      entries.forEach((entry)=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('loaded');
         }
-  
-        setTimeout(() => {
-          imageElement2.style.transition = "transform 0.5s ease-out";
-          imageElement2.style.transform = "translateX(0)"; 
-        }, 20); 
-      }, 500);
+      });
+    },
+    {threshold: 0.5}
+  );
+  images2.forEach((image)=>{observer2.observe(image)});
+
+</script>
+
+<style>
+  .carousel-container {
+    overflow: hidden;
+  }
+
+  .carousel-image2-container{
+    position: relative;
+  }
+  .carousel-image2{
+    transition: opacity 0.1s ease,
+    transform 0.1s ease;
+    opacity: 0;
+    display: none;
+  }
+
+  .carousel-image2.active{
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .carousel-image2.fade-in{
+    animation: fadeIn 0.6s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
     }
-  
-    function nextImage2() {
-      currentIndex2 = (currentIndex2 + 1) % images2.length;
-      updateImage2('next2');
+    100%{
+      opacity: 1;
+      transform: scale(1);
     }
-  
-    function previousImage2() {
-      currentIndex2 = (currentIndex2 - 1 + images2.length) % images2.length;
-      updateImage2('prev2'); 
-    }
-  </script>
+  }
+
+  .carousel-image2.loaded {
+    opacity: 1;
+    transition: opacity 0.1s ease;
+  }
+</style>
