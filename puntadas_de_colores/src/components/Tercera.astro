@@ -1,7 +1,7 @@
 ---
-import Children from "./Niños.astro";
-import ArrowNext from "./ArrowNext.astro";
-import ArrowPrevious from "./ArrowPrevious.astro";
+import Children from "./icons/Niños.astro";
+import ArrowNext from "./icons/ArrowNext.astro";
+import ArrowPrevious from "./icons/ArrowPrevious.astro";
 
 const images2 = ["Img4.webp", "Img7.webp", "Img16.webp", "Img18.webp"];
 ---
@@ -39,7 +39,8 @@ const images2 = ["Img4.webp", "Img7.webp", "Img16.webp", "Img18.webp"];
           />
           ))}
         </div>
-        <button
+        <div class="z-30">
+          <button
         onclick="previousImage2()"
         class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white text-green-600 px-4 py-2 rounded ml-6"
       >
@@ -51,6 +52,8 @@ const images2 = ["Img4.webp", "Img7.webp", "Img16.webp", "Img18.webp"];
       >
         <ArrowNext />
       </button>
+        </div>
+        
         <blockquote class="relative p-8 mb-4">
           <svg
             preserveAspectRatio="none"

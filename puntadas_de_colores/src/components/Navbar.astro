@@ -30,7 +30,7 @@ import Desplegable from "./Desplegable.astro";
       id="desplegable"
     >
       <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
-        <li class="flex items-center">
+        <li class="flex items-center border lg:border-none hover:bg-gray-500 lg:hover:bg-transparent" onclick= "(() => hiddenNavbar())()">
           <a
             class="lg:hover:text-gray-300 text-white px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
             href="#inicio"
@@ -41,7 +41,7 @@ import Desplegable from "./Desplegable.astro";
             <span class="inline-block ml-2">Inicio</span>
           </a>
         </li>
-        <li class="flex items-center">
+        <li class="flex items-center border lg:border-none hover:bg-gray-500 lg:hover:bg-transparent" onclick= "(() => hiddenNavbar())()">
           <a
             class="lg:text-white lg:hover:text-gray-300 text-white px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
             href="#vestuario"
@@ -52,7 +52,7 @@ import Desplegable from "./Desplegable.astro";
             <span class="inline-block ml-2">Vestuario</span>
           </a>
         </li>
-        <li class="flex items-center">
+        <li class="flex items-center border lg:border-none hover:bg-gray-500 lg:hover:bg-transparent" onclick= "(() => hiddenNavbar())()">
           <a
             class="lg:text-white lg:hover:text-gray-300 text-white px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
             href="#ubicación"
@@ -63,7 +63,7 @@ import Desplegable from "./Desplegable.astro";
             <span class="inline-block ml-2">Ubicación</span>
           </a>
         </li>
-        <li class="flex items-center">
+        <li class="flex items-center border lg:border-none hover:bg-gray-500 lg:hover:bg-transparent" onclick= "(() => hiddenNavbar())()">
           <a
             class="lg:text-white lg:hover:text-gray-300 text-white px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
             href="#contactanos"
@@ -99,4 +99,12 @@ import Desplegable from "./Desplegable.astro";
       menu.classList.remove("flex");
     }
   });
+
+  function hiddenNavbar(){
+    const element = document.getElementById("desplegable");
+    if(element){
+      element.classList.toggle("hidden");
+      element.classList.toggle("flex");
+    }
+  }
 </script>
