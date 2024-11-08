@@ -1,7 +1,7 @@
 ---
-import Medalla from './Medalla.astro';
-import Barras from './Barras.astro';
-import Foco from './Foco.astro';
+import Medalla from './icons/Medalla.astro';
+import Barras from './icons/Barras.astro';
+import Foco from './icons/Foco.astro';
 ---
 <section class="relative block bg-gray-900 -mt-24">
     <div
@@ -9,7 +9,7 @@ import Foco from './Foco.astro';
           style="height: 80px;"
         >
         </div>
-        <div class="container mx-auto px-4 lg:pt-24 lg:pb-64">
+        <div class="container mx-auto px-4 lg:pt-24 lg:pb-40">
           <div class="flex flex-wrap text-center justify-center">
             <div class="w-full lg:w-6/12 px-4">
               <h2 class="text-4xl font-semibold text-white">Ubicación</h2>
@@ -55,10 +55,12 @@ import Foco from './Foco.astro';
               >
               <Foco></Foco>
               </div>
-              <h5 class="text-xl mt-5 font-semibold text-white">Diseños Invadores</h5>
+              <div class={`pb-32 lg:pb-0`}>
+                <h5 class="text-xl mt-5 font-semibold text-white">Diseños Invadores</h5>
               <p class="mt-2 sm:mt-6 mb-4 text-gray-500">
                 Inspirados en lo último de la moda, nuestros diseños están hechos para destacar.
               </p>
+              </div>
             </div>
           </div>
         </div>
